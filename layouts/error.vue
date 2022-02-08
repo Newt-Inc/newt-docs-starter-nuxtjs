@@ -11,6 +11,7 @@
 
 <script>
 export default {
+  layout: 'empty', // FIXME: Prevent Nuxt from using the default layout
   props: {
     error: {
       type: Object,
