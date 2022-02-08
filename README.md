@@ -1,4 +1,4 @@
-# newt-blog-starter-nuxtjs
+# newt-docs-starter-nuxtjs
 
 [Newt](https://www.newt.so/) を利用したドキュメントサイト
 <br />技術構成： Nuxt.js, JavaScript
