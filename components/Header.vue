@@ -7,7 +7,7 @@
       </NuxtLink>
       <div class="Link">
         <a
-          href="https://github.com/Newt-Inc/newt-blog-starter-nuxtjs"
+          href="https://github.com/Newt-Inc/newt-docs-starter-nuxtjs"
           rel="noreferrer noopener"
           target="_blank"
           >GitHub</a
@@ -40,7 +40,9 @@
       </button>
       <div v-if="isShow" class="MobileMenu">
         <ul>
-          <li><a href="/docs" aria-current="true">Docs</a></li>
+          <li>
+            <a href="/" aria-current="true">{{ title }}</a>
+          </li>
           <li>
             <a
               href="https://github.com/Newt-Inc/newt-docs-starter-nuxtjs"
@@ -66,7 +68,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Blog',
+      default: 'Docs',
     },
     icon: {
       type: String,

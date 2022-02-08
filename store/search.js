@@ -1,7 +1,5 @@
 import { createClient } from 'newt-client-js'
 
-const ARTICLE_MODEL_NAME = 'article'
-
 export const state = () => ({
   searchText: '',
   isLoading: false,
@@ -40,7 +38,7 @@ export const actions = {
   },
   searchArticles: async (
     { commit },
-    { projectUid, token, apiType, appUid, searchText }
+    { projectUid, articleModelUid, token, apiType, appUid, searchText }
   ) => {
     try {
       commit('setSearchText', searchText)
@@ -73,7 +71,7 @@ export const actions = {
       })
       const { items, total } = await client.getContents({
         appUid,
-        modelUid: ARTICLE_MODEL_NAME,
+        modelUid: articleModelUid,
         query: {
           depth: 2,
           order: ['sortOrder'],

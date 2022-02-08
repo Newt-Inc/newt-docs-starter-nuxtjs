@@ -22,17 +22,16 @@
 
 ### Step2: nuxt.config.jsを書き換える
 
-1. Step1で取得したプロジェクトUID, AppUID, CDN APIトークンでnuxt.config.jsのpublicRuntimeConfigを書き換えます
+1. Step1で取得したプロジェクトUID, AppUID, CDN APIトークンでnuxt.config.jsのconfig変数を書き換えます
 
 ```javascript
-export default {
-  // ...省略
-  publicRuntimeConfig: {
-    projectUid: 'プロジェクトUID',
-    appUid: 'AppUID',
-    token: 'CDN APIトークン',
-    pageLimit: 12,
-  }
+const config = {
+  projectUid: 'プロジェクトUID',
+  appUid: 'AppUID',
+  token: 'CDN APIトークン',
+  apiType: 'cdn',
+  articleModelUid: 'article',
+  categoryModelUid: 'category',
 }
 ```
 
@@ -74,7 +73,7 @@ $ yarn start
 
 | App名（任意） | モデル名（モデルUID） |
 | --- | --- |
-| Blog | Article (`article`) |
+| Docs | Article (`article`) |
 |  | Category (`category`) |
 
 ### Article（`uid: article`）モデル

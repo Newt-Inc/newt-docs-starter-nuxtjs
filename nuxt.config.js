@@ -1,12 +1,18 @@
 import { resolve } from 'path'
+import { createClient } from 'newt-client-js'
+
+const config = {
+  projectUid: 'プロジェクトUID',
+  appUid: 'AppUID',
+  token: 'CDN APIトークン',
+  apiType: 'cdn',
+  articleModelUid: 'article',
+  categoryModelUid: 'category',
+}
 
 export default {
   publicRuntimeConfig: {
-    projectUid: 'プロジェクトUID',
-    appUid: 'AppUID',
-    token: 'CDN APIトークン',
-    apiType: 'cdn',
-    pageLimit: 12,
+    ...config,
   },
 
   // Target: https://go.nuxtjs.dev/config-target
@@ -14,7 +20,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Blog',
+    title: 'Docs',
     htmlAttrs: {
       lang: 'en',
     },
@@ -49,7 +55,29 @@ export default {
   build: {},
 
   alias: {
-    api: resolve(__dirname, './api'),
     utils: resolve(__dirname, './utils'),
+  },
+
+  router: {
+    async extendRoutes(routes, resolve) {
+      const client = createClient({
+        projectUid: config.projectUid,
+        token: config.token,
+        apiType: config.apiType,
+      })
+      const { items } = await client.getContents({
+        appUid: config.appUid,
+        modelUid: config.articleModelUid,
+        query: {
+          depth: 2,
+          order: ['sortOrder'],
+          select: ['title', 'slug'],
+          limit: 1000,
+        },
+      })
+      items.forEach((item) =>
+        routes.push({ name: item.title, path: `/article/${item.slug}` })
+      )
+    },
   },
 }

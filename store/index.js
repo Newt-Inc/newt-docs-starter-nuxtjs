@@ -1,6 +1,4 @@
 import { createClient } from 'newt-client-js'
-const CATEGORY_MODEL_NAME = 'category'
-const ARTICLE_MODEL_NAME = 'article'
 
 export const state = () => ({
   app: null,
@@ -23,7 +21,7 @@ export const getters = {
     return articles[0] || null
   },
   siteTitle: (state) => {
-    return (state.app && (state.app.name || state.app.uid)) || 'Docs'
+    return (state.app && (state.app.name || state.app.uid)) || ''
   },
 }
 
@@ -58,7 +56,10 @@ export const actions = {
       // console.error(err)
     }
   },
-  async fetchCategories({ commit }, { projectUid, token, apiType, appUid }) {
+  async fetchCategories(
+    { commit },
+    { projectUid, categoryModelUid, token, apiType, appUid }
+  ) {
     try {
       const client = createClient({
         projectUid,
@@ -67,7 +68,7 @@ export const actions = {
       })
       const { items } = await client.getContents({
         appUid,
-        modelUid: CATEGORY_MODEL_NAME,
+        modelUid: categoryModelUid,
         query: {
           depth: 1,
           order: ['sortOrder'],
@@ -80,7 +81,10 @@ export const actions = {
       // console.error(err)
     }
   },
-  async fetchArticles({ commit }, { projectUid, token, apiType, appUid }) {
+  async fetchArticles(
+    { commit },
+    { projectUid, articleModelUid, token, apiType, appUid }
+  ) {
     try {
       const client = createClient({
         projectUid,
@@ -89,7 +93,7 @@ export const actions = {
       })
       const { items } = await client.getContents({
         appUid,
-        modelUid: ARTICLE_MODEL_NAME,
+        modelUid: articleModelUid,
         query: {
           depth: 2,
           order: ['sortOrder'],
@@ -104,7 +108,7 @@ export const actions = {
   },
   async fetchCurrentArticle(
     { commit },
-    { projectUid, token, apiType, appUid, slug }
+    { projectUid, articleModelUid, token, apiType, appUid, slug }
   ) {
     try {
       const client = createClient({
@@ -114,7 +118,7 @@ export const actions = {
       })
       const { items } = await client.getContents({
         appUid,
-        modelUid: ARTICLE_MODEL_NAME,
+        modelUid: articleModelUid,
         query: {
           depth: 2,
           order: ['sortOrder'],

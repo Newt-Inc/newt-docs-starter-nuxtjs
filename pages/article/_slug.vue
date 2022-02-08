@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   async asyncData({ $config, params, store }) {
     await store.dispatch('fetchApp', $config)
@@ -14,15 +12,16 @@ export default {
       ...$config,
       slug: params.slug,
     })
-    return {}
+    return {
+      app: store.getters.app,
+      currentArticle: store.getters.currentArticle,
+      siteTitle: store.getters.siteTitle,
+    }
   },
   head() {
     return {
       title: this.currentArticle ? this.currentArticle.title : this.siteTitle,
     }
-  },
-  computed: {
-    ...mapGetters(['app', 'currentArticle', 'siteTitle']),
   },
 }
 </script>
