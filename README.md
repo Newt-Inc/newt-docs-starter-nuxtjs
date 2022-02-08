@@ -1,6 +1,6 @@
 # newt-blog-starter-nuxtjs
 
-[Newt](https://www.newt.so/) を利用したシンプルなブログ
+[Newt](https://www.newt.so/) を利用したドキュメントサイト
 <br />技術構成： Nuxt.js, JavaScript
 
 ## 開発をはじめる
@@ -10,10 +10,10 @@
 1. プロジェクトを作成します
     - プロジェクトUIDを控えておきましょう。プロジェクトUIDは 管理画面URL（ `https://app.newt.so/{プロジェクトUID}` ） もしくは プロジェクト設定 > 一般 から確認できます。
 2. Appを作成します
-    - Appテンプレートから作成する場合、**Blog**を選択し「このテンプレートを追加」をクリックしてください。
+    - Appテンプレートから作成する場合、**Docs**を選択し「このテンプレートを追加」をクリックしてください。
     - スクラッチで作成する場合は、App名とAppUIDを設定して次のステップに進みます。
     - AppUIDを控えておきましょう。AppUIDは管理画面URL（ `https://app.newt.so/{プロジェクトUID}/app/{AppUID}` ） または App設定 > 一般 から確認できます。
-3. App設定から、Articleモデル, Categoryモデル, Authorモデルを作成します
+3. App設定から、Articleモデル, Categoryモデルを作成します
     - Appテンプレートから作成した場合、すでにモデルが作成されているためこのステップは飛ばします
     - スクラッチで作成した場合は、[Newtプロジェクトの構成](#Newtプロジェクトの構成)に従ってAppとモデルを作成します
 4. プロジェクト設定 > APIキー からCDN APIトークンを作成します
@@ -70,13 +70,12 @@ $ yarn start
 
 ## Newtプロジェクトの構成
 
-`Blog` appの中にArticle, Category, Authorの3つのモデルを作ります。
+`Docs` appの中にArticle, Category の2つのモデルを作ります。
 
 | App名（任意） | モデル名（モデルUID） |
 | --- | --- |
 | Blog | Article (`article`) |
 |  | Category (`category`) |
-|  | Author (`author`) |
 
 ### Article（`uid: article`）モデル
 
@@ -84,22 +83,13 @@ $ yarn start
 | --- | --- | --- | --- |
 | title | タイトル | テキスト | 必須フィールド, このフィールドをタイトルに使う |
 | slug | スラッグ | テキスト | 必須フィールド |
-| coverImage | カバー画像 | 画像 |  |
 | body | 本文 | Markdown or リッチテキスト |  |
-| category | カテゴリ | 参照（Categoryモデル） | 複数値 |
-| author | 著者 | 参照（Authorモデル） |  |
+| category | カテゴリ | 参照（Categoryモデル） | |
+| sortOrder | 順番（昇順） | 数字 |  |
 
 ### Category（`uid: category`）モデル
 
 | フィールドID | フィールド名 | フィールドID	フィールド名 | フィールドID	フィールド名 |
 | --- | --- | --- | --- |
 | name | 名前 | テキスト | 必須フィールド, このフィールドをタイトルに使う |
-| slug | スラッグ | テキスト | 必須フィールド |
-
-### Author（`uid: author`）モデル
-
-| フィールドID | フィールド名 | フィールドID	フィールド名 | フィールドID	フィールド名 |
-| --- | --- | --- | --- |
-| fullName | 名前 | テキスト | 必須フィールド, このフィールドをタイトルに使う |
-| profileImage | スラッグ | 画像 |  |
-| introduction | 自己紹介 | Markdown or リッチテキスト |  |
+| sortOrder | 順番（昇順） | 数字 | |

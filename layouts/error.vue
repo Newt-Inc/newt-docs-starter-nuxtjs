@@ -4,9 +4,7 @@
     <h1 v-if="error.statusCode === 404" class="Error_Message">
       Page not found
     </h1>
-    <h1 v-else class="Error_Message">
-      An error occurred
-    </h1>
+    <h1 v-else class="Error_Message">An error occurred</h1>
     <NuxtLink to="/" class="Error_Link">Back to the home page</NuxtLink>
   </div>
 </template>
@@ -16,9 +14,9 @@ export default {
   props: {
     error: {
       type: Object,
-      default: null
-    }
-  }
+      default: null,
+    },
+  },
 }
 </script>
 
@@ -33,7 +31,8 @@ body {
   font-size: 1.4rem;
   line-height: 1.8;
   color: #333;
-  font-family: 'Segoe UI Emoji', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  font-family: 'Segoe UI Emoji', 'Helvetica Neue', Arial,
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
   -webkit-text-size-adjust: 100%;
   height: 100%;
   overflow-wrap: break-word;
@@ -43,7 +42,7 @@ body {
   height: 100%;
 }
 a {
-  color: #006CDC;
+  color: #006cdc;
   text-decoration: underline;
 }
 a:hover {
