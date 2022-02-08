@@ -11,3 +11,7 @@ export const toPlainText = (markdown) => {
   md.render(markdown)
   return md.plainText
 }
+
+export const toHtml = (markdown) => {
+  return md.render(markdown)
+}

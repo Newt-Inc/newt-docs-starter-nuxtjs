@@ -123,6 +123,9 @@ export const actions = {
           depth: 2,
           order: ['sortOrder'],
           slug,
+          body: {
+            fmt: 'text',
+          },
         },
       })
       commit('setCurrentArticle', items[0] || null)
