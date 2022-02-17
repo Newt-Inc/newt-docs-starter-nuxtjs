@@ -2,7 +2,17 @@
   <header class="Header">
     <div class="Header_Inner">
       <NuxtLink to="/" class="Title">
-        <span v-if="icon" class="Title_Icon">{{ icon }}</span>
+        <span
+          v-if="icon && icon.type === 'emoji' && icon.value"
+          class="Title_Icon"
+          >{{ icon.value }}
+        </span>
+        <span
+          v-else-if="icon && icon.type === 'image' && icon.value"
+          class="Title_Icon"
+        >
+          <img :src="icon.value" />
+        </span>
         <div class="Title_Text">{{ title }}</div>
       </NuxtLink>
       <div class="Link">
@@ -66,13 +76,9 @@
 <script>
 export default {
   props: {
-    title: {
-      type: String,
-      default: 'Docs',
-    },
-    icon: {
-      type: String,
-      default: '',
+    app: {
+      type: Object,
+      default: null,
     },
     articles: {
       type: Array,
@@ -89,6 +95,14 @@ export default {
       searchText: this.$route.query.q || '',
       scrollPosition: 0,
     }
+  },
+  computed: {
+    title() {
+      return (this.app && (this.app.name || this.app.uid)) || 'Docs'
+    },
+    icon() {
+      return (this.app && this.app.icon) || { type: 'emoji', value: '📖' }
+    },
   },
   methods: {
     focusInput() {
@@ -163,7 +177,14 @@ export default {
   justify-content: center;
   font-size: 1.8rem;
   flex-shrink: 0;
-  margin: 0 8px -2px 0;
+  margin: 0 10px -2px 0;
+}
+.Title_Icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+  font-family: 'object-fit: cover'; /* IE11 */
+  border-radius: 4px;
 }
 .Title_Text {
   font-size: 1.6rem;

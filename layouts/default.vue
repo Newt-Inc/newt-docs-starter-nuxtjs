@@ -1,11 +1,6 @@
 <template>
   <div class="Wrapper">
-    <Header
-      :title="title"
-      :icon="icon"
-      :articles="articles"
-      :categories="categories"
-    />
+    <Header :app="app" :articles="articles" :categories="categories" />
     <main class="Main">
       <Navigation
         :current="currentArticle"
@@ -23,12 +18,6 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters(['app', 'categories', 'articles', 'currentArticle']),
-    title() {
-      return (this.app && this.app.name) || 'Docs'
-    },
-    icon() {
-      return (this.app && this.app.icon && this.app.icon.value) || '✏️'
-    },
   },
 }
 </script>
