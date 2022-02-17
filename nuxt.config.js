@@ -2,9 +2,9 @@ import { resolve } from 'path'
 import { createClient } from 'newt-client-js'
 
 const config = {
-  projectUid: 'プロジェクトUID',
-  appUid: 'AppUID',
-  token: 'CDN APIトークン',
+  projectUid: process.env.PROJECT_UID,
+  appUid: process.env.APP_UID,
+  token: process.env.API_TOKEN,
   apiType: 'cdn',
   articleModelUid: 'article',
   categoryModelUid: 'category',
