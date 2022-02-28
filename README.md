@@ -18,28 +18,28 @@ Newt's starter
 
 ## 開発をはじめる
 
-### Step1: Newtプロジェクトをセットアップ
+### Step1: Newtスペースをセットアップ
 
-1. プロジェクトを作成します
-    - プロジェクトUIDを控えておきましょう。プロジェクトUIDは 管理画面URL（ `https://app.newt.so/{プロジェクトUID}` ） もしくは プロジェクト設定 > 一般 から確認できます。
+1. スペースを作成します
+    - スペースUIDを控えておきましょう。スペースUIDは 管理画面URL（ `https://app.newt.so/{スペースUID}` ） もしくは スペース設定 > 一般 から確認できます。
 2. Appを作成します
     - Appテンプレートから作成する場合、**Docs**を選択し「このテンプレートを追加」をクリックしてください。
     - スクラッチで作成する場合は、App名とAppUIDを設定して次のステップに進みます。
-    - AppUIDを控えておきましょう。AppUIDは管理画面URL（ `https://app.newt.so/{プロジェクトUID}/app/{AppUID}` ） または App設定 > 一般 から確認できます。
+    - AppUIDを控えておきましょう。AppUIDは管理画面URL（ `https://app.newt.so/{スペースUID}/app/{AppUID}` ） または App設定 > 一般 から確認できます。
 3. App設定から、Articleモデル, Categoryモデルを作成します
     - Appテンプレートから作成した場合、すでにモデルが作成されているためこのステップは飛ばします
-    - スクラッチで作成した場合は、[Newtプロジェクトの構成](#Newtプロジェクトの構成)に従ってAppとモデルを作成します
-4. プロジェクト設定 > APIキー からCDN APIトークンを作成します
-    - プロジェクト設定 > APIキー よりCDN APIトークンを作成します
+    - スクラッチで作成した場合は、[Newtスペースの構成](#Newtスペースの構成)に従ってAppとモデルを作成します
+4. スペース設定 > APIキー からCDN APIトークンを作成します
+    - スペース設定 > APIキー よりCDN APIトークンを作成します
     - 複製マークをクリックしてトークンをコピーしましょう
 
 ### Step2: nuxt.config.jsを書き換える
 
-1. Step1で取得したプロジェクトUID, AppUID, CDN APIトークンでnuxt.config.jsのconfig変数を書き換えます
+1. Step1で取得したスペースUID, AppUID, CDN APIトークンでnuxt.config.jsのconfig変数を書き換えます
 
 ```javascript
 const config = {
-  projectUid: 'プロジェクトUID',
+  spaceUid: 'スペースUID',
   appUid: 'AppUID',
   token: 'CDN APIトークン',
   apiType: 'cdn',
@@ -80,7 +80,7 @@ $ yarn generate
 $ yarn start
 ```
 
-## Newtプロジェクトの構成
+## Newtスペースの構成
 
 `Docs` appの中にArticle, Category の2つのモデルを作ります。
 

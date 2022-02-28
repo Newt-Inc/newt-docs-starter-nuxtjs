@@ -38,7 +38,7 @@ export const actions = {
   },
   searchArticles: async (
     { commit },
-    { projectUid, articleModelUid, token, apiType, appUid, searchText }
+    { spaceUid, articleModelUid, token, apiType, appUid, searchText }
   ) => {
     try {
       commit('setSearchText', searchText)
@@ -65,7 +65,7 @@ export const actions = {
       }
 
       const client = createClient({
-        projectUid,
+        spaceUid,
         token,
         apiType,
       })

@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { createClient } from 'newt-client-js'
 
 const config = {
-  projectUid: 'プロジェクトUID',
+  spaceUid: 'スペースUID',
   appUid: 'AppUID',
   token: 'CDN APIトークン',
   apiType: 'cdn',
@@ -61,7 +61,7 @@ export default {
   router: {
     async extendRoutes(routes, resolve) {
       const client = createClient({
-        projectUid: config.projectUid,
+        spaceUid: config.spaceUid,
         token: config.token,
         apiType: config.apiType,
       })
