@@ -47,9 +47,6 @@ export const actions = {
       commit('setNumberOfSearchResult', 0)
 
       const query = {
-        body: {
-          fmt: 'text',
-        },
         or: [
           {
             title: {

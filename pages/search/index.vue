@@ -20,7 +20,7 @@
           {{ article.title }}
         </NuxtLink>
         <div class="SearchResult_ItemDescription">
-          {{ toPlainText(article.body) }}
+          {{ htmlToText(article.body) }}
         </div>
       </div>
     </template>
@@ -30,7 +30,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { toPlainText } from 'utils/markdown'
+import { htmlToText } from 'html-to-text'
 
 export default {
   async asyncData({ $config, store }) {
@@ -63,7 +63,16 @@ export default {
     this.$store.dispatch('search/init')
   },
   methods: {
-    toPlainText,
+    htmlToText(html) {
+      return htmlToText(html, {
+        selectors: [
+          {
+            selector: 'img',
+            format: 'skip',
+          },
+        ],
+      })
+    },
   },
 }
 </script>

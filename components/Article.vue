@@ -1,12 +1,12 @@
 <template>
   <article class="Article">
     <h1 class="Article_Title">{{ article.title }}</h1>
-    <div class="Article_Body" v-html="body"></div>
+    <!-- eslint-disable-next-line vue/no-v-html -->
+    <div class="Article_Body" v-html="article.body"></div>
   </article>
 </template>
 
 <script>
-import { toHtml } from '../utils/markdown'
 export default {
   props: {
     article: {
@@ -15,11 +15,6 @@ export default {
         title: '',
         body: '',
       }),
-    },
-  },
-  computed: {
-    body() {
-      return toHtml(this.article.body)
     },
   },
 }
