@@ -1,7 +1,7 @@
 {
   "name": "newt-docs-starter-nuxtjs",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
@@ -25,5 +25,7 @@
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.12.1",
     "prettier": "^2.3.2"
-  }
+  },
+  "author": "Newt, Inc.",
+  "license": "MIT"
 }

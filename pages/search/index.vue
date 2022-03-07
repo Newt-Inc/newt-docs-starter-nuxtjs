@@ -3,7 +3,7 @@
     <div class="SearchResult_Text">
       Found {{ numberOfSearchResult }} results for your search
     </div>
-    <p v-if="isLoading" class="Empty">Search...</p>
+    <p v-if="isLoading" class="Empty">Searching...</p>
     <template v-else-if="searchResults.length > 0">
       <div
         v-for="article in searchResults"
