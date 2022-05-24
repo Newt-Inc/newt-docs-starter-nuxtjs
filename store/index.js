@@ -116,7 +116,7 @@ export const actions = {
         token,
         apiType,
       })
-      const { items } = await client.getContents({
+      const article = await client.getFirstContent({
         appUid,
         modelUid: articleModelUid,
         query: {
@@ -125,7 +125,7 @@ export const actions = {
           slug,
         },
       })
-      commit('setCurrentArticle', items[0] || null)
+      commit('setCurrentArticle', article)
     } catch (err) {
       // console.error(err)
     }
